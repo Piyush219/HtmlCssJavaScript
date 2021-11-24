@@ -56,5 +56,41 @@ function addNewLineElement(obj){
     li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`));
 
     userList.appendChild(li);
+
+    console.log(document.createElement("i"));
+  const btnEdit = document.createElement("input");
+  btnEdit.id = "edit";
+  btnEdit.type = "button";
+  btnEdit.value = "Edit User";
+  btnEdit.addEventListener("click", () => {
+    console.log(obj);
+    document.getElementById("name").value = obj.name;
+    document.getElementById("email").value = obj.email;
+    li.remove();
+  });
+  btnEdit.className = "delete";
+  btnEdit.style.border = "2px solid green";
+ btnEdit.style.float = 'right'
+  //console.log(btnEdit);
+  li.appendChild(btnEdit);
+
+  const btnDel = document.createElement("input");
+  btnDel.type = "button";
+  btnDel.value = "Delete User";
+  btnDel.className = "delete";
+  btnDel.style.border = "2px solid red";
+  btnDel.style.float = 'right'
+  //console.log(btnDel);
+  li.appendChild(btnDel);
+  btnDel.addEventListener("click", () => {
+    localStorage.removeItem("userdetails" + obj.email);
+    li.remove();
+  });
+ 
+  console.log(li);
+
+  userList.appendChild(li);
 }
+
+
      
