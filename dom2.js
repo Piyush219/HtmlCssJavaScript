@@ -4,6 +4,18 @@ const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users'); 
 
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+    for(i=0;i<localStorage.length;i++){
+        let details = ( localStorage.getItem( localStorage.key( i ) ))
+        let newDetails = JSON.parse(details)
+        const li = document.createElement('li');
+        addNewLineElement(newDetails)
+}})
+
+   
 myForm.addEventListener('submit', onSubmit);
 function onSubmit(e){
     e.preventDefault();
@@ -26,23 +38,23 @@ function onSubmit(e){
     
     let myObj_serialized = JSON.stringify(obj);
 
-    localStorage.setItem("MyObj", myObj_serialized)
+    localStorage.setItem(`userdetails${obj.email}`, myObj_serialized)
 
     let myObj_deserialized = JSON.parse(localStorage.getItem("MyObj"))  // Converting string back into Onject
 
     console.log(myObj_deserialized)
-
-    //localStorage.setItem('Name:', nameInput.value)
-    //localStorage.setItem('Email:', emailInput.value)
-
-    
-    //const li = document.createElement('li');
-   //  li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
-
-    //userList.appendChild(li);
-
-    //
+   
     nameInput.value = '';
     emailInput.value = '';
 
+    addNewLineElement(obj);
+
 }
+
+function addNewLineElement(obj){
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`));
+
+    userList.appendChild(li);
+}
+     
