@@ -17,17 +17,25 @@ function onSubmit(e){
         console.log('success')
     }
 
+    let obj={
+        name: nameInput.value,
+        email: emailInput.value
+    };
+
+    //localStorage.setItem("myObj",obj)  // Data stores as string
     
-    localStorage.setItem('Name:', nameInput.value)
-    localStorage.setItem('Email:', emailInput.value)
+    let myObj_serialized = JSON.stringify(obj);
 
-    /* var array = JSON.parse(localStorage.getItem('Name:') || '[]');
-    array.push(nameInput);
-    localStorage.setItem('Name:', JSON.stringify(array));
+    localStorage.setItem("MyObj", myObj_serialized)
 
-    var earray = JSON.parse(localStorage.getItem('Email:') || '[]');
-    earray.push(emailInput);
-    localStorage.setItem('Email:', JSON.stringify(earray)); */
+    let myObj_deserialized = JSON.parse(localStorage.getItem("MyObj"))  // Converting string back into Onject
+
+    console.log(myObj_deserialized)
+
+    //localStorage.setItem('Name:', nameInput.value)
+    //localStorage.setItem('Email:', emailInput.value)
+
+    
     //const li = document.createElement('li');
    //  li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
 
