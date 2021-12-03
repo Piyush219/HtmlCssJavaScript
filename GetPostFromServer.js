@@ -5,32 +5,43 @@ const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
 
-
-/* document.addEventListener('DOMContentLoaded', () => {
-
-  for (i = 0; i < localStorage.length; i++) {
-    let details = (localStorage.getItem(localStorage.key(i)))
-    let newDetails = JSON.parse(details)
-    const li = document.createElement('li');
-    addNewLineElement(newDetails)
-  }
-}) */
-
-
 //-----------Get To Show in the Starting of the page from server----------------------
 
-axios.get("https://crudcrud.com/api/7407dc3d72f748df82e22dfcbd329484/firstappointmentdata")  
+document.addEventListener('DOMContentLoaded', () => {
+
+  axios.get("https://crudcrud.com/api/7407dc3d72f748df82e22dfcbd329484/firstappointmentdata")  
     .then((response) =>{
-      // console.log(response)
-      // console.log(response.data)
-      // addNewLineElement(response.data)
-      response.data.map((item)=>{
-        addNewLineElement(item)
-      })
+      for(var i =0; i<response.data.length;i++){
+        addNewLineElement(response.data[i])
+      }
     })
     .catch((err) => {
       console.log(err)
-    })
+
+  // for (i = 0; i < localStorage.length; i++) {
+  //   let details = (localStorage.getItem(localStorage.key(i)))
+  //   let newDetails = JSON.parse(details)
+  //   const li = document.createElement('li');
+  //   addNewLineElement(newDetails)
+  // }
+})
+})
+
+
+
+
+// axios.get("https://crudcrud.com/api/7407dc3d72f748df82e22dfcbd329484/firstappointmentdata")  
+//     .then((response) =>{
+//       // console.log(response)
+//       // console.log(response.data)
+//       // addNewLineElement(response.data)
+//       response.data.map((item)=>{
+//         addNewLineElement(item)
+//       })
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     })
 
 myForm.addEventListener('submit', onSubmit);
 function onSubmit(e) {
