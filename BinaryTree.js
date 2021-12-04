@@ -56,7 +56,7 @@ class BinaryST {
         }
     }
 
-    preorder(node) {
+    recursionPreorder(node) {
         if (node !== null) {
             console.log(node.data);
             if (node.left != null) {
@@ -69,6 +69,26 @@ class BinaryST {
         }
     }
 
+    iterativePreOrder(node) {
+        if (node == null) {
+            return
+        }
+        var stack = [];
+        stack.push(root)
+
+        while (stack.length > 0) {
+            var Inode = stack[stack.length - 1];
+            console.log(Inode.data + " ");
+            stack.pop()
+
+            if (Inode.right != null) {
+                stack.push(Inode.right)
+            }
+            if (Inode.left != null) {
+                stack.push(Inode.left)
+            }
+        }
+    }
     getRootNode() {
         return this.root;
     }
@@ -86,6 +106,8 @@ binaryTree.insert(22);
 binaryTree.insert(17);
 
 var root = binaryTree.getRootNode()
-binaryTree.preorder(root)
+binaryTree.recursionPreorder(root)
 console.log(binaryTree)
 console.log(binaryTree.search(root, 15))
+
+binaryTree.iterativePreOrder(root)
