@@ -118,8 +118,16 @@ function addNewLineElement(obj) {
   btnDel.style.float = 'right'
   //console.log(btnDel);
   li.appendChild(btnDel);
-  btnDel.addEventListener("click", () => {
-    localStorage.removeItem("userdetails" + obj.email);
+  btnDel.addEventListener("click", () => {          //-------------AXIOS DELETE ---------------
+
+    axios.delete(`https://crudcrud.com/api/7407dc3d72f748df82e22dfcbd329484/firstappointmentdata/${obj._id}`)
+      .then((response) =>{
+        console.log("Delete Success")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    // localStorage.removeItem("userdetails" + obj.email);
     li.remove();
   });
 
